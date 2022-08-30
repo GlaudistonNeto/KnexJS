@@ -6,5 +6,15 @@
   "repository": "https://github.com/GlaudistonNeto/KnexJS.git",
   "author": "GlaudistonNeto",
   "license": "MIT",
-  "private": false
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "private": false,
+  "dependencies": {
+    "knex": "^2.2.0",
+    "mysql2": "^2.3.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
 }
