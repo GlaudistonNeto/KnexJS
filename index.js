@@ -129,3 +129,17 @@ database.select([
           console.log(err);
         });
 */
+
+async function testTransaction() {
+  try {
+    await database.transaction(async trans => {
+      await database.insert({ name: "Unknown Studios" }).table("studios");
+      await database.insert({ name: "Mojang" }).table("studios");
+      await database.insert({ name: "Gearbox" }).table("studios");
+    });
+  } catch(err) {
+    console.log(err);
+  }
+}
+
+testTransaction();
