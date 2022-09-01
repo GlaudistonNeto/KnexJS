@@ -71,3 +71,61 @@ database.where({ id: 1 }).update({ price: 49.90, name: 'Sea of Thieves' })
           console.log(err);
         });
 */
+
+/* ORDERBY
+database.select().table("games").orderBy("name", "asc").then(data => {
+  console.log(data);
+}).catch(err => {
+  console.log(err);
+});
+*/
+
+/* 1 - 1 relation (join)
+database.select(["games.*", "studios.name as studio_name"])
+        .table("games")
+        .where("game_id", 5)
+        .innerJoin("studios", "studios.game_id", "games.id").then(data => {
+          console.log(data);
+        }).catch(err => {
+          console.log(err);
+        });
+*/
+
+/* 1 - M relation (join)
+database.select(["games.*", "studios.name as studio_name"])
+        .table("games")
+        .where("game_id", 5)
+        .innerJoin("studios", "studios.game_id", "games.id").then(data => {
+          var studioGamesArray = data;
+          var game = {
+            id: 0,
+            name: "",
+            studios: [],
+          }
+          game.id = data[0].id;
+          game.name = data[0].name;
+
+          data.forEach(studio => {
+            game.studios.push({ name: studio.studio_name });
+          });
+          console.log(game);
+        }).catch(err => {
+          console.log(err);
+        });
+*/
+
+/* 1 - M relation (multiple join)
+database.select([
+  "studios.name as studio_name",
+  "games.name as game_name"
+])
+        .table("games_studios")
+        .innerJoin("games", "games.id", "games_studios.game_id",)
+        .innerJoin("studios", "studios.id", "games_studios.studio_id",)
+        .where("game_id", 4)
+        .then(data => {
+          console.log(data);
+        }).catch(err => {
+          console.log(err);
+        });
+*/
