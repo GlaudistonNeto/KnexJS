@@ -1,20 +1,21 @@
 {
-  "name": "knexjs",
-  "version": "1.0.0",
-  "description": "using knex in a nodejs project",
-  "main": "index.js",
-  "repository": "https://github.com/GlaudistonNeto/KnexJS.git",
-  "author": "GlaudistonNeto",
+  "name": "KnexJS",
+  "version": "2.0.0",
+  "description": "trying the new way to create query builders with knex",
+  "main": "server.js",
+  "author": "glaudistontheonly <glaudistonson@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "nodemon server.js"
   },
+  "repository_url": "https://github.com/GlaudistonNeto/KnexJS",
   "private": false,
-  "dependencies": {
-    "knex": "^2.2.0",
-    "mysql2": "^2.3.3"
-  },
   "devDependencies": {
-    "nodemon": "^2.0.19"
+    "nodemon": "^3.0.1"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "knex": "^2.5.1",
+    "mysql2": "^3.5.2"
   }
 }
