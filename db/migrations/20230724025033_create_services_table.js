@@ -5,9 +5,6 @@
 exports.up = function(knex) {
   return knex.schema.createTable('services', function(table) {
     table.increments('id').primary();
-    table.integer('user_id');
-    table.foreign('user_id').references('user.id').onDelete('CASCADE')
-         .onUpdate('CASCADE');
     table.string('name', 255).notNullable();
     table.decimal('price', 15, 2).notNullable();
     table.timestamp('created_at', { useTz: true }).notNullable();

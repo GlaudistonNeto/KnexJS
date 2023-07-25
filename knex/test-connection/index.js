@@ -1,4 +1,4 @@
-const config = require('../config/database');
+const knex = require('../config/database');
 
 knex('users').then(data => {
   console.log(data);
