@@ -7,8 +7,7 @@ exports.up = function(knex) {
     table.increments('id').primary();
     table.integer('user_id').unsigned().references('id').inTable('users');
     table.integer('service_id').unsigned().references('id').inTable('services');
-    table.string('name').notNullable();
-    table.decimal('price').notNullable();
+    table.decimal('total_price').notNullable();
   });
 };
 

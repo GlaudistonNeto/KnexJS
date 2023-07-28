@@ -16,23 +16,21 @@ exports.getAllOrders = async (req, res) => {
 // Create a new order
 exports.createOrder = async (req, res) => {
   try {
-    const { user_id, service_id, name, price } = req.body;
+    const { user_id, service_id, total_price } = req.body;
 
     // Validate the input data
     existsOrError(user_id, 'User ID is required');
     existsOrError(service_id, 'Service ID is required');
-    existsOrError(name, 'Name is required');
-    existsOrError(price, 'Price is required');
+    existsOrError(total_price, 'Total price is required');
 
     // Insert the new order into the 'orders' table
     const [orderId] = await db('orders').insert({
       user_id,
       service_id,
-      name,
-      price,
+      total_price,
     });
 
-    res.status(201).json({ orderId, user_id, service_id, name, price });
+    res.status(201).json({ orderId, user_id, service_id, total_price });
   } catch (error) {
     console.error('Error creating order:', error);
     res.status(500).json({ error: 'Internal server error' });
@@ -43,20 +41,18 @@ exports.createOrder = async (req, res) => {
 exports.updateOrder = async (req, res) => {
   try {
     const { orderId } = req.params;
-    const { user_id, service_id, name, price } = req.body;
+    const { user_id, service_id, totalPrice } = req.body;
 
     // Validate the input data
     existsOrError(user_id, 'User ID is required');
     existsOrError(service_id, 'Service ID is required');
-    existsOrError(name, 'Name is required');
-    existsOrError(price, 'Price is required');
+    existsOrError(totalPrice, 'Total price is required');
 
     // Update the order in the 'orders' table
     const updatedRows = await db('orders').where('id', orderId).update({
       user_id,
       service_id,
-      name,
-      price,
+      total_price,
     });
 
     if (updatedRows === 0) {
