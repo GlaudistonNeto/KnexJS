@@ -1,6 +1,10 @@
 const jwt = require('jsonwebtoken');
+const cors = require('cors'); // Import the cors library
 
 module.exports = (req, res, next) => {
+  // Enable CORS for all routes in this middleware
+  cors()(req, res, () => {}); // Add this line to handle CORS headers
+
   const token = req.header('Authorization');
 
   if (!token) {

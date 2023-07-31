@@ -1,6 +1,6 @@
 // ./controllers/servicesController.js
 const db = require('../db');
-const { existsOrError } = require('./validation');
+const { existsOrError } = require('../routes/validation')
 
 // Get all services
 exports.getAllServices = async (req, res) => {

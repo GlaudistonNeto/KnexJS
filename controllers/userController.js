@@ -1,7 +1,7 @@
 // ./controllers/userController.js
 const bcrypt = require('bcrypt');
 const db = require('../db');
-const { existsOrError, strongPassword } = require('./validation'); // Import the validation functions
+const { existsOrError, strongPassword } = require('../routes/validation'); // Import the validation functions
 
 // Register a new user
 exports.registerUser = async (req, res) => {

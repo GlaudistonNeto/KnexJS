@@ -1,6 +1,6 @@
 // ./controllers/ordersController.js
 const db = require('../db');
-const { existsOrError } = require('./validation');
+const { existsOrError } = require('../routes/validation');
 
 // Get all orders
 exports.getAllOrders = async (req, res) => {
